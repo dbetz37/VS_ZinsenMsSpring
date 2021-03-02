@@ -1,6 +1,8 @@
 package com.example.demo;
 
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
 import java.util.Map;
 @RestController
 @RequestMapping("/zinsen")
@@ -29,9 +31,5 @@ public class ZinsrechnerController {
         return endkapital;
     }
 
-    int berechneLaufzeitInMonaten(double kreditbetrag, double zinssatz, double rueckzahlung){
-        double startBetrag = kreditbetrag;
-        double monate = kreditbetrag/rueckzahlung;
-        
-    }
+
 }
