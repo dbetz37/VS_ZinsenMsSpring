@@ -14,6 +14,7 @@ public class BauController {
             @RequestParam double zinssatz,
             @RequestParam double rueckzahlung) {
         return berechneLaufzeitInMonaten(kreditbetrag, zinssatz, rueckzahlung);
+
     }
     @PostMapping
     public int berechnePost(@RequestBody Map<String, String> parameter) {
@@ -27,16 +28,17 @@ public class BauController {
         int monate = 0;
         double zinsen;
         double tilgung;
-
+        double richtigerzinssatz = zinssatz * 0.01;
         while(restBetrag > 0){
-            zinsen = restBetrag*zinssatz;
+            zinsen = restBetrag*richtigerzinssatz;
             tilgung = rueckzahlung - zinsen;
             if(restBetrag-tilgung > 0){
                 restBetrag -= tilgung;
+                monate++;
             } else {
                 restBetrag = 0;
             }
-            monate++;
+
         }
         return monate;
     }
