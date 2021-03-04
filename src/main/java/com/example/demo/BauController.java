@@ -9,7 +9,7 @@ import java.util.Map;
 @RequestMapping("/baukapital")
 public class BauController {
     @GetMapping
-    public int berechneGet(
+    public int berechneMonatGet(
             @RequestParam double kreditbetrag,
             @RequestParam double zinssatz,
             @RequestParam double rueckzahlung) {
@@ -17,10 +17,10 @@ public class BauController {
 
     }
     @PostMapping
-    public int berechnePost(@RequestBody Map<String, String> parameter) {
+    public int berechneMonatPost(@RequestBody Map<String, String> parameter) {
         double kreditbetrag = Double.parseDouble(parameter.get("kreditbetrag"));
         double zinssatz = Double.parseDouble(parameter.get("zinssatz"));
-        double rueckzahlung = Double.parseDouble(parameter.get("ruekzahlung"));
+        double rueckzahlung = Integer.parseInt(parameter.get("ruekzahlung"));
         return berechneLaufzeitInMonaten(kreditbetrag, zinssatz, rueckzahlung);
     }
     int berechneLaufzeitInMonaten(double kreditbetrag, double zinssatz, double rueckzahlung){
