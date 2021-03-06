@@ -31,7 +31,7 @@ public class BauController {
         int monate = 0;
         double zinsen;
         double tilgung;
-        double richtigerzinssatz = zinssatz * 0.01;
+        double richtigerzinssatz = (zinssatz * 0.01) / 12;
         while(restBetrag > 0){
             zinsen = restBetrag*richtigerzinssatz;
             tilgung = rueckzahlung - zinsen;
@@ -74,7 +74,7 @@ public class BauController {
 
         while(restBetrag > 0){
 
-            double richtigerzinssatz = zinssatz * 0.01;
+            double richtigerzinssatz = (zinssatz * 0.01) / 12;
             double zinsen = restBetrag*richtigerzinssatz;
             double tilgung = rueckzahlung - zinsen;
 
