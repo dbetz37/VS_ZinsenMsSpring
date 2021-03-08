@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 @RestController
 @RequestMapping("/baukapital")
 public class BauController {
+
     @GetMapping
     public int berechneMonatGet(
             @RequestParam double kreditbetrag,
@@ -40,27 +41,12 @@ public class BauController {
                 monate++;
             } else {
                 restBetrag = 0;
+                monate++;
             }
 
         }
         return monate;
     }
-    /*
-    public Collection<Professor> find(
-            @RequestParam(required = false) String vorname,
-            @RequestParam(required = false) String nachname) {
-        Collection<Professor> professorenCollection = professoren.values();
-        Stream<Professor> stream = professorenCollection.stream();
-        if (vorname!=null) {
-            stream = stream.filter(professor -> professor.vorname.equals(vorname));
-        }
-        if (nachname!=null) {
-            stream = stream.filter(professor -> professor.nachname.equals(nachname));
-        }
-        return stream.collect(Collectors.toList());
-    }
-
-     */
 
     public Collection<Double> rueckzahlungsplan (double kreditbetrag, double zinssatz, double rueckzahlung){
 
@@ -69,8 +55,6 @@ public class BauController {
         double restBetrag = kreditbetrag;
 
         a.add(restBetrag);
-
-        //planCollection.add(5.0);
 
         while(restBetrag > 0){
 
